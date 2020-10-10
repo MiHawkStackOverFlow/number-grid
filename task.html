@@ -1,14 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shuffle Sort Example</title>
 </head>
 <style>
-    
+    body {
+        background-color: #EFEFEF;
+        text-align: center;
+    }
+
+    #created-by {
+        font-style: italic;
+    }
+
+    .child {
+        display: inline-flex;
+    }
+
+    .dark-blue {
+        background-color: #2F454E;
+    }
+
+    .sky-blue {
+        background-color: #2B8EAD;
+    }
+
+    .light-blue {
+        background-color: #6F98A8;
+    }
+
+    .medium-grey {
+        background-color: #BFBFBF;
+    }
+
+    .game-board {
+        width: 600px;
+        height: 600px;
+        margin: 0 auto;
+        color: #FFFFFF;
+        display: grid;
+        grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    }
+
+    .box {
+        font-family: Helvetica;
+        font-weight: bold;
+        font-size: 4em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .push_button {
+        width: 220px;
+        height: 40px;
+        text-align: center;
+        color: #FFF;
+        text-decoration: none;
+        line-height: 43px;
+        font-family: 'Oswald', Helvetica;
+        margin: 30px;
+        display: block;
+    }
+
+    .blue {
+        text-shadow: -1px -1px 0 #2C7982;
+        background: #2B8EAD;
+        border: 1px solid #379AA4;
+        border-radius: 5px;
+        box-shadow: 0 1px 0 #338A94 inset, 0 -1px 0 #338A94 inset, 0 4px 0 #338A94, 0 4px 2px #338A94;
+    }
+
+    .blue:hover {
+        background: #48C6D4;
+    }
+
+    /* mobile css */
+    @media only screen and (max-width: 600px) {
+        html {
+            height: 98%;
+            border: 5px solid #000000;
+            border-radius: 5px;
+        }
+
+        body {
+            margin: 0px;
+            background-color: #FFFFFF;
+            text-align: center;
+        }
+
+        #my-header {
+            color: #FFFFFF;
+            background-color: #000000;
+            height: 50px;
+            padding-top: 15px;
+            width: 100%;
+            margin: 0px;
+        }
+
+        .child {
+            display: inline-flex;
+        }
+
+        .push_button {
+            width: 120px;
+            height: 40px;
+            text-align: center;
+            color: #FFF;
+            text-decoration: none;
+            line-height: 20px;
+            font-family: 'Oswald', Helvetica;
+            margin: 30px;
+            display: block;
+        }
+
+        .game-board {
+            width: 300px;
+            height: auto;
+            margin: 0 auto;
+            color: #000000;
+            display: block;
+        }
+
+        .box {
+            padding-top: 15px;
+            font-family: Helvetica;
+            font-weight: bold;
+            font-size: 1em;
+            height: 30px;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .dark-blue {
+            background-color: #EFEFEF;
+            border-left: 5px solid #2F454E;
+        }
+
+        .sky-blue {
+            background-color: #EFEFEF;
+            border-left: 5px solid #2B8EAD;
+        }
+
+        .light-blue {
+            background-color: #EFEFEF;
+            border-left: 5px solid #6F98A8;
+        }
+
+        .medium-grey {
+            background-color: #EFEFEF;
+            border-left: 5px solid #BFBFBF;
+        }
+    }
 </style>
+
 <body>
-    
+    <h2 id="my-header">Shuffle and Sort</h2>
+    <div class="child">
+        <button id="shuffle-button" class="push_button blue">SHUFFLE</button>
+        <button id="sort-button" class="push_button blue">SORT</button>
+    </div>
+    <div class="game-board">
+        <div class="box light-blue">1</div>
+        <div class="box sky-blue">2</div>
+        <div class="box dark-blue">3</div>
+        <div class="box sky-blue">4</div>
+        <div class="box dark-blue">5</div>
+        <div class="box medium-grey">6</div>
+        <div class="box medium-grey">7</div>
+        <div class="box light-blue">8</div>
+        <div class="box dark-blue">9</div>
+    </div>
+    <p id="created-by">Shuffle and Sort by Abhishek</p>
+
+    <script>
+        var gamesBoard = document.getElementsByClassName('game-board')[0];
+        var sorted = true;
+
+        function shuffle() {
+            sorted = false;
+            for (let i = gamesBoard.children.length; i > 0; i--) {
+                gamesBoard.appendChild(gamesBoard.children[Math.random() * i | 0]);
+            }
+        }
+
+        function sort() {
+            if (!sorted) {
+                const items = [...gamesBoard.children];
+                items.sort((a, b) => a.innerHTML - b.innerHTML);
+                items.forEach(it => gamesBoard.appendChild(it));
+                sorted = true;
+            } else {
+                alert('Already sorted');
+            }
+        }
+
+        const shuffleButton = document.getElementById('shuffle-button');
+        shuffleButton.addEventListener("click", shuffle);
+
+        const sortButton = document.getElementById('sort-button');
+        sortButton.addEventListener("click", sort);
+    </script>
 </body>
+
 </html>
