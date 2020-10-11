@@ -17,7 +17,8 @@
     }
 
     .child {
-        display: inline-flex;
+        display: block;
+        margin: 0px 50px 0px 0px;
     }
 
     .dark-blue {
@@ -39,9 +40,9 @@
     .game-board {
         width: 600px;
         height: 600px;
-        margin: 0 auto;
         color: #FFFFFF;
         display: grid;
+        margin: 0px 120px 0px 0px;
         grid-template: repeat(3, 1fr) / repeat(3, 1fr);
     }
 
@@ -78,6 +79,19 @@
         background: #48C6D4;
     }
 
+    .flex-container {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    @media only screen 
+    and (min-device-width : 600px) 
+    and (max-device-width : 1000px) {
+        .game-board { 
+            margin: 0px 0px 0px 50px;
+        }
+    }
+
     /* mobile css */
     @media only screen and (max-width: 600px) {
         html {
@@ -103,6 +117,7 @@
 
         .child {
             display: inline-flex;
+            margin: 0px;
         }
 
         .push_button {
@@ -113,10 +128,16 @@
             text-decoration: none;
             line-height: 20px;
             font-family: 'Oswald', Helvetica;
-            margin: 30px;
+            margin: 20px;
             display: block;
         }
 
+        /*  TODO: 
+            CSS Grid also makes it possible to create responsive layouts without using media queries.
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+            grid-gap: 1rem;     
+        */ 
         .game-board {
             width: 300px;
             height: auto;
@@ -156,25 +177,31 @@
             background-color: #EFEFEF;
             border-left: 5px solid #BFBFBF;
         }
+
+        .flex-container {
+            display: block;
+        }
     }
 </style>
 
 <body>
     <h2 id="my-header">Shuffle and Sort</h2>
-    <div class="child">
-        <button id="shuffle-button" class="push_button blue">SHUFFLE</button>
-        <button id="sort-button" class="push_button blue">SORT</button>
-    </div>
-    <div class="game-board">
-        <div class="box light-blue">1</div>
-        <div class="box sky-blue">2</div>
-        <div class="box dark-blue">3</div>
-        <div class="box sky-blue">4</div>
-        <div class="box dark-blue">5</div>
-        <div class="box medium-grey">6</div>
-        <div class="box medium-grey">7</div>
-        <div class="box light-blue">8</div>
-        <div class="box dark-blue">9</div>
+    <div class="flex-container">
+        <div class="child">
+            <button id="shuffle-button" class="push_button blue">SHUFFLE</button>
+            <button id="sort-button" class="push_button blue">SORT</button>
+        </div>
+        <div class="game-board">
+            <div class="box light-blue">1</div>
+            <div class="box sky-blue">2</div>
+            <div class="box dark-blue">3</div>
+            <div class="box sky-blue">4</div>
+            <div class="box dark-blue">5</div>
+            <div class="box medium-grey">6</div>
+            <div class="box medium-grey">7</div>
+            <div class="box light-blue">8</div>
+            <div class="box dark-blue">9</div>
+        </div>
     </div>
     <p id="created-by">Shuffle and Sort by Abhishek</p>
 
