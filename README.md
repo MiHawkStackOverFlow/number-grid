@@ -2,6 +2,8 @@
 
 The page consists of 9 numbered cards which can be manipulated by using the shuffle and short buttons.
 
+  Site hosted at link https://mihawkstackoverflow.github.io/number-grid/index.html 
+
 - Shuffle will shuffle numbers from 1 to 9 in random order.
 - Sort will sort it in ascending order and place numbers from 1 to 9 as on landing on page for first time.
 
