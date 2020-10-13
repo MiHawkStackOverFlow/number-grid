@@ -1,6 +1,8 @@
 body {
     background-color: #EFEFEF;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #created-by {
@@ -123,18 +125,13 @@ and (max-device-width : 1000px) {
         display: block;
     }
 
-    /*  TODO: 
-        CSS Grid also makes it possible to create responsive layouts without using media queries.
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-        grid-gap: 1rem;     
-    */ 
     .game-board {
         width: 300px;
         height: auto;
         margin: 0 auto;
         color: #000000;
-        display: block;
+        display: flex;
+        flex-direction: column;
     }
 
     .box {
