@@ -1,6 +1,6 @@
 (function () {
     let gamesBoard = document.getElementsByClassName('game-board')[0];
-    var sorted = true;
+    let sorted = true;
 
     function shuffle() {
         sorted = false;
